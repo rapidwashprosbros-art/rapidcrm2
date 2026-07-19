@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 222 20% 12%;
+  --card: 0 0% 100%;
+  --card-foreground: 222 20% 12%;
+  --muted: 220 20% 96%;
+  --muted-foreground: 220 10% 45%;
+  --border: 220 15% 90%;
+  --primary: 222 47% 15%;
+  --primary-foreground: 0 0% 100%;
+  --destructive: 0 72% 51%;
+  --destructive-foreground: 0 0% 100%;
+  --radius: 14px;
+  --font-sans: ui-sans-serif, -apple-system, "Segoe UI", Inter, Roboto, sans-serif;
+  --font-display: ui-sans-serif, -apple-system, "Segoe UI", Inter, Roboto, sans-serif;
+}
+
+.dark {
+  --background: 222 25% 8%;
+  --foreground: 210 20% 96%;
+  --card: 222 22% 11%;
+  --card-foreground: 210 20% 96%;
+  --muted: 222 18% 16%;
+  --muted-foreground: 220 10% 65%;
+  --border: 222 15% 20%;
+  --primary: 210 20% 96%;
+  --primary-foreground: 222 25% 10%;
+  --destructive: 0 63% 55%;
+  --destructive-foreground: 0 0% 100%;
+}
+
+body {
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+}
