@@ -11,7 +11,8 @@ type Params = { params: Promise<{ id: string }> };
 
 export const GET = withAuth<Params["params"]>(
   async (_req, ctx, { params }) => {
-    const customer = await getCustomer(ctx, params.id);
+    const { id } = await params;
+    const customer = await getCustomer(ctx, id);
     return NextResponse.json(customer);
   },
   { permission: "customers:read" }
@@ -19,9 +20,10 @@ export const GET = withAuth<Params["params"]>(
 
 export const PATCH = withAuth<Params["params"]>(
   async (req: NextRequest, ctx, { params }) => {
+    const { id } = await params;
     const body = await req.json();
     const input = updateCustomerSchema.parse(body);
-    const customer = await updateCustomer(ctx, params.id, input);
+    const customer = await updateCustomer(ctx, id, input);
     return NextResponse.json(customer);
   },
   { permission: "customers:write" }
@@ -29,7 +31,8 @@ export const PATCH = withAuth<Params["params"]>(
 
 export const DELETE = withAuth<Params["params"]>(
   async (_req, ctx, { params }) => {
-    await deleteCustomer(ctx, params.id);
+    const { id } = await params;
+    await deleteCustomer(ctx, id);
     return new NextResponse(null, { status: 204 });
   },
   { permission: "customers:delete" }
