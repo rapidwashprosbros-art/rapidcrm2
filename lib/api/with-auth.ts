@@ -24,7 +24,10 @@ export function withAuth<TParams = Record<string, string>>(
   handler: Handler<TParams>,
   options?: { permission?: Permission }
 ) {
-  return async (req: NextRequest, routeParams: { params: TParams }) => {
+  return async (
+  req: NextRequest,
+  routeParams: { params: Promise<TParams> }
+) => {
     try {
       const session = await auth.api.getSession({ headers: req.headers });
       if (!session?.user) {
