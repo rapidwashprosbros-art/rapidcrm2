@@ -9,9 +9,8 @@ import type { RequestContext } from "@/types";
 type Handler<TParams = Record<string, string>> = (
   req: NextRequest,
   ctx: RequestContext,
-  routeParams: { params: TParams }
+  routeParams: { params: Promise<TParams> }
 ) => Promise<NextResponse>;
-
 /**
  * Wrap every /api/v1/** route handler in this. It:
  *   1. Resolves the Better Auth session (401 if none).
