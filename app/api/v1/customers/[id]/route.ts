@@ -7,7 +7,7 @@ import {
 } from "@/services/customers.service";
 import { updateCustomerSchema } from "@/lib/validation/customer.schema";
 
-type Params = { params: { id: string } };
+type Params = { params: Promise<{ id: string }> };
 
 export const GET = withAuth<Params["params"]>(
   async (_req, ctx, { params }) => {
